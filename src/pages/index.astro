@@ -4,11 +4,14 @@
  * Landing page del sitio de pintura
  */
 
-import Layout from '@/layouts/Layout.astro';
-import Hero from '@/components/sections/Hero.astro';
-import { COMPANY_INFO } from '@/constants/site';
-import About from '@/components/sections/About.astro';
-import Contact from '@/components/sections/Contact.astro';
+import About from "@/components/sections/About.astro";
+import Contact from "@/components/sections/Contact.astro";
+import Gallery from "@/components/sections/Gallery.astro";
+import Hero from "@/components/sections/Hero.astro";
+import Services from "@/components/sections/Services.astro";
+import Team from "@/components/sections/Team.astro";
+import { COMPANY_INFO } from "@/constants/site";
+import Layout from "@/layouts/Layout.astro";
 
 const seoData = {
   title: `${COMPANY_INFO.name} - ${COMPANY_INFO.tagline}`,
@@ -20,8 +23,10 @@ const seoData = {
   <main>
     <!-- Hero Section -->
     <Hero />
+    <Services />
     <About />
+    <Team />
+    <Gallery />
     <Contact />
-
   </main>
 </Layout>
