@@ -6,6 +6,7 @@
 
 import type { LayoutProps } from '@/types';
 import { DEFAULT_SEO } from '@/constants/site';
+import '@/styles/design-tokens.css';
 
 interface Props extends LayoutProps {}
 
@@ -54,9 +55,6 @@ const seoData = {
     {seoData.canonicalUrl && <link rel="canonical" href={seoData.canonicalUrl} />}
 
     <!-- Preload fonts (agregar cuando tengas fuentes personalizadas) -->
-
-    <!-- Design Tokens CSS -->
-    <link rel="stylesheet" href="/src/styles/design-tokens.css" />
   </head>
   <body class="antialiased">
     <slot />
