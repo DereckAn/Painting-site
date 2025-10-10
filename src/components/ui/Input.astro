@@ -1,0 +1,43 @@
+---
+/**
+ * Input Component
+ * Reusable input field component
+ */
+
+interface Props {
+  type?: 'text' | 'email' | 'tel' | 'number' | 'password' | 'url';
+  name?: string;
+  id?: string;
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  value?: string;
+  class?: string;
+}
+
+const {
+  type = 'text',
+  name,
+  id,
+  placeholder,
+  required = false,
+  disabled = false,
+  value,
+  class: className = '',
+} = Astro.props;
+
+const baseStyles = 'w-full px-4 py-3 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
+
+const classes = `${baseStyles} ${className}`.trim();
+---
+
+<input
+  type={type}
+  name={name}
+  id={id}
+  placeholder={placeholder}
+  required={required}
+  disabled={disabled}
+  value={value}
+  class={classes}
+/>

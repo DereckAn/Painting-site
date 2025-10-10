@@ -7,6 +7,8 @@
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/sections/Hero.astro';
 import { COMPANY_INFO } from '@/constants/site';
+import About from '@/components/sections/About.astro';
+import Contact from '@/components/sections/Contact.astro';
 
 const seoData = {
   title: `${COMPANY_INFO.name} - ${COMPANY_INFO.tagline}`,
@@ -18,11 +20,8 @@ const seoData = {
   <main>
     <!-- Hero Section -->
     <Hero />
+    <About />
+    <Contact />
 
-    <!-- Aquí irán las demás secciones -->
-    <!-- Services Section -->
-    <!-- Gallery Section -->
-    <!-- Testimonials Section -->
-    <!-- Contact Section -->
   </main>
 </Layout>
