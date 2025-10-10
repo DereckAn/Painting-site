@@ -1,0 +1,135 @@
+---
+/**
+ * Hero Section
+ * Sección principal con imagen de fondo, título, subtítulo y CTA
+ * Totalmente responsivo usando dvh para mejor soporte móvil
+ */
+
+import Button from '@/components/ui/Button.astro';
+import Container from '@/components/ui/Container.astro';
+import { HERO_CONTENT } from '@/constants/content';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  backgroundImage?: string;
+}
+
+const {
+  title = HERO_CONTENT.title,
+  subtitle = HERO_CONTENT.subtitle,
+  ctaText = HERO_CONTENT.ctaText,
+  ctaLink = HERO_CONTENT.ctaLink,
+  backgroundImage = 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2000',
+} = Astro.props;
+---
+
+<section
+  id="hero"
+  class="relative h-dvh min-h-[600px] w-full overflow-hidden"
+  aria-label="Hero Section"
+>
+  <!-- Background Image con Overlay -->
+  <div class="absolute inset-0 z-0">
+    <!-- Imagen de fondo -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style={`background-image: url('${backgroundImage}');`}
+      role="img"
+      aria-label="Pintura profesional con rodillo"
+    >
+      <!-- Fallback para cuando no hay imagen -->
+      <div class="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-600 to-gray-800"></div>
+    </div>
+
+    <!-- Overlay oscuro para legibilidad -->
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <!-- Contenido -->
+  <Container class="relative z-10 h-full">
+    <div class="flex h-full flex-col items-center justify-center text-center">
+      <!-- Título Principal -->
+      <h1
+        class="mb-6 max-w-5xl font-serif text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+      >
+        {title}
+      </h1>
+
+      <!-- Subtítulo -->
+      <p
+        class="mb-10 max-w-3xl text-base leading-relaxed text-gray-100 sm:text-lg md:text-xl lg:text-2xl"
+      >
+        {subtitle}
+      </p>
+
+      <!-- CTA Button -->
+      <Button
+        href={ctaLink}
+        variant="primary"
+        size="lg"
+        class="group shadow-xl hover:shadow-2xl"
+      >
+        <span>{ctaText}</span>
+        <!-- Icono de flecha -->
+        <svg
+          class="h-5 w-5 transition-transform group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 7l5 5m0 0l-5 5m5-5H6"
+          ></path>
+        </svg>
+      </Button>
+
+      <!-- Scroll Indicator (opcional) -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
+        <a
+          href="#services"
+          class="flex flex-col items-center gap-2 text-white opacity-75 transition-opacity hover:opacity-100"
+          aria-label="Desplazarse a servicios"
+        >
+          <span class="text-sm uppercase tracking-wider">Descubre más</span>
+          <svg
+            class="h-6 w-6 animate-bounce"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  /* Asegurar que el hero sea accesible en diferentes dispositivos */
+  @media (max-width: 640px) {
+    h1 {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+  }
+
+  /* Smooth scroll para los enlaces internos */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

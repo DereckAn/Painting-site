@@ -1,0 +1,28 @@
+---
+/**
+ * Página Principal
+ * Landing page del sitio de pintura
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import { COMPANY_INFO } from '@/constants/site';
+
+const seoData = {
+  title: `${COMPANY_INFO.name} - ${COMPANY_INFO.tagline}`,
+  description: COMPANY_INFO.description,
+};
+---
+
+<Layout {...seoData}>
+  <main>
+    <!-- Hero Section -->
+    <Hero />
+
+    <!-- Aquí irán las demás secciones -->
+    <!-- Services Section -->
+    <!-- Gallery Section -->
+    <!-- Testimonials Section -->
+    <!-- Contact Section -->
+  </main>
+</Layout>

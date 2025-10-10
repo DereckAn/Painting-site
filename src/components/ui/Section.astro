@@ -1,0 +1,41 @@
+---
+/**
+ * Section Component
+ * Wrapper para secciones de página con padding vertical consistente
+ */
+
+import type { SectionProps } from '@/types';
+
+interface Props extends SectionProps {
+  class?: string;
+}
+
+const {
+  id,
+  className = '',
+  background = 'white',
+  paddingY = 'lg',
+  class: additionalClass = '',
+} = Astro.props;
+
+// Estilos de fondo
+const backgroundStyles = {
+  white: 'bg-white',
+  gray: 'bg-gray-50',
+  dark: 'bg-gray-900 text-white',
+};
+
+// Padding vertical
+const paddingStyles = {
+  sm: 'py-12 md:py-16',
+  md: 'py-16 md:py-20',
+  lg: 'py-20 md:py-28',
+  xl: 'py-28 md:py-36',
+};
+
+const classes = `${backgroundStyles[background]} ${paddingStyles[paddingY]} ${className} ${additionalClass}`.trim();
+---
+
+<section id={id} class={classes}>
+  <slot />
+</section>
