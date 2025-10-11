@@ -1,0 +1,67 @@
+---
+/**
+ * Gallery/Portfolio Section Component
+ * Displays completed painting projects in a grid layout
+ */
+
+const galleryImages = [
+  {
+    url: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000",
+    alt: "Modern living room with elegant finishes"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000",
+    alt: "Minimalist bedroom"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000",
+    alt: "Contemporary kitchen"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000",
+    alt: "Modern house exterior"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000",
+    alt: "Elegant facade"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?q=80&w=1000",
+    alt: "Sophisticated dining room"
+  }
+];
+---
+
+<section id="gallery" class="py-24 px-6 bg-muted/30">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-sm font-medium tracking-wider text-muted-foreground uppercase">
+        Portfolio
+      </span>
+      <h2 class="text-4xl md:text-5xl font-display font-bold mt-4 tracking-tight">
+        Completed Projects
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {galleryImages.map((image, index) => (
+        <div class="group relative aspect-square overflow-hidden rounded-sm cursor-pointer">
+          <img
+            src={image.url}
+            alt={image.alt}
+            class="object-cover w-full h-full grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+          <!-- Overlay text -->
+          <div class="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p class="text-white font-medium text-sm">
+              {image.alt}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
