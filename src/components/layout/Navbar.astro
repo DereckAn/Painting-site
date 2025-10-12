@@ -1,0 +1,164 @@
+---
+/**
+ * Navbar Component
+ * Navigation bar with logo and menu items
+ * Responsive with mobile hamburger menu
+ */
+
+import { COMPANY_INFO } from '@/constants/site';
+---
+
+<nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 md:h-20">
+      <!-- Logo -->
+      <a href="#top" class="flex-shrink-0 transition-opacity hover:opacity-80">
+        <img 
+          src="/images/logo.jpeg" 
+          alt={COMPANY_INFO.name}
+          class="h-10 md:h-14 w-auto object-contain"
+        />
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a 
+          href="#about" 
+          class="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+        >
+          About
+        </a>
+        <a 
+          href="#gallery" 
+          class="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+        >
+          Portfolio
+        </a>
+        <a 
+          href="#contact" 
+          class="bg-gray-900 text-white px-6 py-2.5 rounded-md hover:bg-gray-800 font-medium transition-colors"
+        >
+          Get a Quote
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button 
+        id="hamburger-btn"
+        class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 z-50"
+        aria-label="Toggle menu"
+      >
+        <span class="hamburger-line w-6 h-0.5 bg-gray-900 transition-all duration-300"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-gray-900 transition-all duration-300"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-gray-900 transition-all duration-300"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div 
+    id="mobile-menu"
+    class="md:hidden fixed inset-0 bg-white transform -translate-y-full transition-transform duration-500 ease-in-out"
+  >
+    <div class="flex flex-col items-center justify-center h-full space-y-8 text-center">
+      <a 
+        href="#about" 
+        class="mobile-menu-item text-2xl text-gray-700 hover:text-gray-900 font-medium transition-colors"
+      >
+        About
+      </a>
+      <a 
+        href="#gallery" 
+        class="mobile-menu-item text-2xl text-gray-700 hover:text-gray-900 font-medium transition-colors"
+      >
+        Portfolio
+      </a>
+      <a 
+        href="#contact" 
+        class="mobile-menu-item bg-gray-900 text-white px-8 py-3 rounded-md text-xl hover:bg-gray-800 font-medium transition-colors"
+      >
+        Get a Quote
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer to prevent content from hiding under fixed navbar -->
+<div class="h-16 md:h-20"></div>
+
+<script>
+  // Mobile menu toggle functionality
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburgerLines = document.querySelectorAll('.hamburger-line');
+  const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+
+  let isMenuOpen = false;
+
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+    
+    if (isMenuOpen) {
+      // Open menu
+      mobileMenu?.classList.remove('-translate-y-full');
+      mobileMenu?.classList.add('translate-y-0');
+      
+      // Animate hamburger to X
+      hamburgerLines[0]?.classList.add('rotate-45', 'translate-y-2');
+      hamburgerLines[1]?.classList.add('opacity-0');
+      hamburgerLines[2]?.classList.add('-rotate-45', '-translate-y-2');
+      
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Close menu
+      mobileMenu?.classList.remove('translate-y-0');
+      mobileMenu?.classList.add('-translate-y-full');
+      
+      // Animate X back to hamburger
+      hamburgerLines[0]?.classList.remove('rotate-45', 'translate-y-2');
+      hamburgerLines[1]?.classList.remove('opacity-0');
+      hamburgerLines[2]?.classList.remove('-rotate-45', '-translate-y-2');
+      
+      // Re-enable body scroll
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Toggle menu on button click
+  hamburgerBtn?.addEventListener('click', toggleMenu);
+
+  // Close menu when clicking on menu items
+  mobileMenuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (isMenuOpen) {
+        toggleMenu();
+      }
+    });
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isMenuOpen) {
+      toggleMenu();
+    }
+  });
+</script>
+
+<style>
+  /* Ensure smooth scroll offset for fixed navbar */
+  html {
+    scroll-padding-top: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 6rem;
+    }
+  }
+
+  /* Hamburger animation styles */
+  .hamburger-line {
+    transform-origin: center;
+  }
+</style>
