@@ -5,9 +5,9 @@
  * Totalmente responsivo usando dvh para mejor soporte móvil
  */
 
-import Button from '@/components/ui/Button.astro';
-import Container from '@/components/ui/Container.astro';
-import { HERO_CONTENT } from '@/constants/content';
+import Button from "@/components/ui/Button.astro";
+import Container from "@/components/ui/Container.astro";
+import { HERO_CONTENT } from "@/constants/content";
 
 interface Props {
   title?: string;
@@ -22,7 +22,7 @@ const {
   subtitle = HERO_CONTENT.subtitle,
   ctaText = HERO_CONTENT.ctaText,
   ctaLink = HERO_CONTENT.ctaLink,
-  backgroundImage = 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2000',
+  backgroundImage = "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2000",
 } = Astro.props;
 ---
 
@@ -36,12 +36,17 @@ const {
     <!-- Imagen de fondo -->
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style={`background-image: url('${backgroundImage}');`}
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${backgroundImage}')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
       role="img"
       aria-label="Pintura profesional con rodillo"
     >
       <!-- Fallback para cuando no hay imagen -->
-      <div class="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-600 to-gray-800"></div>
+     
+      </div>
     </div>
 
     <!-- Overlay oscuro para legibilidad -->
@@ -86,8 +91,7 @@ const {
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M13 7l5 5m0 0l-5 5m5-5H6"
-          ></path>
+            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
         </svg>
       </Button>
 
@@ -111,8 +115,7 @@ const {
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            ></path>
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
           </svg>
         </a>
       </div>
