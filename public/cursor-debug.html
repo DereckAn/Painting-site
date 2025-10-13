@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Debug Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        .test-area {
+            padding: 40px;
+            margin: 20px 0;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background: #f5f5f5;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        /* Test 1: Data URI (inline SVG) */
+        .test-1 {
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000000' d='M20,3c0-1.654-1.346-3-3-3H3C1.346,0,0,1.346,0,3v2c0,1.654,1.346,3,3,3h14c1.654,0,3-1.346,3-3,1.103,0,2,.897,2,2v1c0,1.103-.897,2-2,2h-7c-2.206,0-4,1.794-4,4v.184c-1.161,.414-2,1.514-2,2.816v4c0,1.654,1.346,3,3,3s3-1.346,3-3v-4c0-1.302-.839-2.402-2-2.816v-.184c0-1.103,.897-2,2-2h7c2.206,0,4-1.794,4-4v-1c0-2.206-1.794-4-4-4Z'/%3E%3C/svg%3E") 12 12, auto;
+        }
+
+        /* Test 2: External SVG file */
+        .test-2 {
+            cursor: url('/images/paint-roller.svg') 12 12, auto;
+        }
+
+        /* Test 3: Fallback only (default cursor) */
+        .test-3 {
+            cursor: crosshair;
+        }
+
+        .info {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #0066cc;
+        }
+
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Custom Cursor Debug Test</h1>
+    
+    <div class="info">
+        <strong>Instrucciones:</strong>
+        <ol>
+            <li>Mueve el cursor sobre cada área de prueba</li>
+            <li>Abre DevTools (F12)</li>
+            <li>Ve a la pestaña "Console"</li>
+            <li>En "Elements", inspecciona cada área y mira el CSS computado</li>
+            <li>Revisa si hay errores en la consola</li>
+        </ol>
+    </div>
+
+    <div class="test-area test-1">
+        <h2>Test 1: Data URI (SVG inline)</h2>
+        <p>Mueve el cursor aquí. Deberías ver el icono del rodillo de pintura.</p>
+        <p>Este método incluye el SVG directamente en el CSS como data URI.</p>
+    </div>
+
+    <div class="test-area test-2">
+        <h2>Test 2: External SVG File</h2>
+        <p>Mueve el cursor aquí. Deberías ver el icono del rodillo de pintura.</p>
+        <p>Este método carga el SVG desde: <code>/images/paint-roller.svg</code></p>
+    </div>
+
+    <div class="test-area test-3">
+        <h2>Test 3: Crosshair (Fallback)</h2>
+        <p>Mueve el cursor aquí. Deberías ver una cruz (+).</p>
+        <p>Este es un cursor estándar del navegador.</p>
+    </div>
+
+    <div class="info">
+        <strong>Debugging en DevTools:</strong>
+        <ul>
+            <li>Si ves el cursor por defecto en Test 1 y 2: El navegador no soporta cursores SVG o hay un error en el SVG</li>
+            <li>Si solo Test 1 funciona: El problema es con la ruta del archivo SVG</li>
+            <li>Si ninguno funciona: Puede ser un problema del navegador o sistema operativo</li>
+        </ul>
+        <p><strong>Comando para verificar en consola:</strong></p>
+        <code>getComputedStyle(document.querySelector('.test-1')).cursor</code>
+    </div>
+
+    <script>
+        console.log('🔍 Cursor Debug Information:');
+        console.log('Test 1 cursor:', getComputedStyle(document.querySelector('.test-1')).cursor);
+        console.log('Test 2 cursor:', getComputedStyle(document.querySelector('.test-2')).cursor);
+        console.log('Test 3 cursor:', getComputedStyle(document.querySelector('.test-3')).cursor);
+        console.log('---');
+        console.log('User Agent:', navigator.userAgent);
+        console.log('Platform:', navigator.platform);
+    </script>
+</body>
+</html>
