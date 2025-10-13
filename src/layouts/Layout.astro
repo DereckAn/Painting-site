@@ -4,11 +4,12 @@
  * Layout base para todas las páginas del sitio
  */
 
-import type { LayoutProps } from '@/types';
-import { DEFAULT_SEO } from '@/constants/site';
-import Navbar from '@/components/layout/Navbar.astro';
-import '@/styles/design-tokens.css';
-import '@/styles/custom-cursor.css';
+import Navbar from "@/components/layout/Navbar.astro";
+import { DEFAULT_SEO } from "@/constants/site";
+import "@/styles/custom-cursor.css";
+import "@/styles/design-tokens.css";
+import "@/styles/globals.css";
+import type { LayoutProps } from "@/types";
 
 interface Props extends LayoutProps {}
 
@@ -32,15 +33,17 @@ const seoData = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
     <title>{seoData.title}</title>
     <meta name="description" content={seoData.description} />
-    {seoData.keywords && (
-      <meta name="keywords" content={seoData.keywords.join(', ')} />
-    )}
+    {
+      seoData.keywords && (
+        <meta name="keywords" content={seoData.keywords.join(", ")} />
+      )
+    }
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={seoData.ogType} />
@@ -54,12 +57,19 @@ const seoData = {
     <meta name="twitter:description" content={seoData.description} />
 
     <!-- Canonical URL -->
-    {seoData.canonicalUrl && <link rel="canonical" href={seoData.canonicalUrl} />}
+    {
+      seoData.canonicalUrl && (
+        <link rel="canonical" href={seoData.canonicalUrl} />
+      )
+    }
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="antialiased" id="top">
     <Navbar />
