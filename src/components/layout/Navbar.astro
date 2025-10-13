@@ -5,16 +5,16 @@
  * Responsive with mobile hamburger menu
  */
 
-import { COMPANY_INFO } from '@/constants/site';
+import { COMPANY_INFO } from "@/constants/site";
 ---
 
 <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-  <div class=" px-4 sm:px-6 lg:px-8">
+  <div class="px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16 md:h-20">
       <!-- Logo -->
       <a href="#top" class="flex-shrink-0 transition-opacity hover:opacity-80">
-        <img 
-          src="/images/logo.jpeg" 
+        <img
+          src="/images/logo.jpeg"
           alt={COMPANY_INFO.name}
           class="h-10 md:h-14 w-auto object-contain"
         />
@@ -22,60 +22,74 @@ import { COMPANY_INFO } from '@/constants/site';
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex items-center space-x-8">
-        <a 
-          href="#about" 
-          class="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+        <a
+          href="#about"
+          class="nav-link text-gray-700 hover:text-gray-900 font-medium transition-colors relative group"
         >
           About
+          <span
+            class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-300 group-hover:w-full"
+          ></span>
         </a>
-        <a 
-          href="#gallery" 
-          class="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+        <a
+          href="#gallery"
+          class="nav-link text-gray-700 hover:text-gray-900 font-medium transition-colors relative group"
         >
           Portfolio
+          <span
+            class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-300 group-hover:w-full"
+          ></span>
         </a>
-        <a 
-          href="#contact" 
-          class="bg-gray-900 text-white px-6 py-2.5 rounded-md hover:bg-gray-800 font-medium transition-colors"
+        <a
+          href="#contact"
+          class="nav-link bg-gray-900 text-white px-6 py-2.5 rounded-md hover:bg-gray-800 font-medium transition-all duration-300 hover:scale-105"
         >
           Get a Quote
         </a>
       </div>
 
       <!-- Mobile Hamburger Button -->
-      <button 
+      <button
         id="hamburger-btn"
         class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 z-50"
         aria-label="Toggle menu"
       >
-        <span class="hamburger-line w-6 h-0.5 bg-gray-900 transition-all duration-300"></span>
-        <span class="hamburger-line w-6 h-0.5 bg-gray-900 transition-all duration-300"></span>
-        <span class="hamburger-line w-6 h-0.5 bg-gray-900 transition-all duration-300"></span>
+        <span
+          class="hamburger-line w-6 h-0.5 bg-gray-900 transition-all duration-300"
+        ></span>
+        <span
+          class="hamburger-line w-6 h-0.5 bg-gray-900 transition-all duration-300"
+        ></span>
+        <span
+          class="hamburger-line w-6 h-0.5 bg-gray-900 transition-all duration-300"
+        ></span>
       </button>
     </div>
   </div>
 
   <!-- Mobile Menu -->
-  <div 
+  <div
     id="mobile-menu"
     class="md:hidden fixed inset-0 bg-white transform -translate-y-full transition-transform duration-500 ease-in-out"
   >
-    <div class="flex flex-col items-center justify-center h-full space-y-8 text-center">
-      <a 
-        href="#about" 
-        class="mobile-menu-item text-2xl text-gray-700 hover:text-gray-900 font-medium transition-colors"
+    <div
+      class="flex flex-col items-center justify-center h-full space-y-8 text-center"
+    >
+      <a
+        href="#about"
+        class="mobile-menu-item nav-link text-2xl text-gray-700 hover:text-gray-900 font-medium transition-colors"
       >
         About
       </a>
-      <a 
-        href="#gallery" 
-        class="mobile-menu-item text-2xl text-gray-700 hover:text-gray-900 font-medium transition-colors"
+      <a
+        href="#gallery"
+        class="mobile-menu-item nav-link text-2xl text-gray-700 hover:text-gray-900 font-medium transition-colors"
       >
         Portfolio
       </a>
-      <a 
-        href="#contact" 
-        class="mobile-menu-item bg-gray-900 text-white px-8 py-3 rounded-md text-xl hover:bg-gray-800 font-medium transition-colors"
+      <a
+        href="#contact"
+        class="mobile-menu-item nav-link bg-gray-900 text-white px-8 py-3 rounded-md text-xl hover:bg-gray-800 font-medium transition-colors hover:scale-105"
       >
         Get a Quote
       </a>
@@ -88,49 +102,49 @@ import { COMPANY_INFO } from '@/constants/site';
 
 <script>
   // Mobile menu toggle functionality
-  const hamburgerBtn = document.getElementById('hamburger-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const hamburgerLines = document.querySelectorAll('.hamburger-line');
-  const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const hamburgerLines = document.querySelectorAll(".hamburger-line");
+  const mobileMenuItems = document.querySelectorAll(".mobile-menu-item");
 
   let isMenuOpen = false;
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
-    
+
     if (isMenuOpen) {
       // Open menu
-      mobileMenu?.classList.remove('-translate-y-full');
-      mobileMenu?.classList.add('translate-y-0');
-      
+      mobileMenu?.classList.remove("-translate-y-full");
+      mobileMenu?.classList.add("translate-y-0");
+
       // Animate hamburger to X
-      hamburgerLines[0]?.classList.add('rotate-45', 'translate-y-2');
-      hamburgerLines[1]?.classList.add('opacity-0');
-      hamburgerLines[2]?.classList.add('-rotate-45', '-translate-y-2');
-      
+      hamburgerLines[0]?.classList.add("rotate-45", "translate-y-2");
+      hamburgerLines[1]?.classList.add("opacity-0");
+      hamburgerLines[2]?.classList.add("-rotate-45", "-translate-y-2");
+
       // Prevent body scroll
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
       // Close menu
-      mobileMenu?.classList.remove('translate-y-0');
-      mobileMenu?.classList.add('-translate-y-full');
-      
+      mobileMenu?.classList.remove("translate-y-0");
+      mobileMenu?.classList.add("-translate-y-full");
+
       // Animate X back to hamburger
-      hamburgerLines[0]?.classList.remove('rotate-45', 'translate-y-2');
-      hamburgerLines[1]?.classList.remove('opacity-0');
-      hamburgerLines[2]?.classList.remove('-rotate-45', '-translate-y-2');
-      
+      hamburgerLines[0]?.classList.remove("rotate-45", "translate-y-2");
+      hamburgerLines[1]?.classList.remove("opacity-0");
+      hamburgerLines[2]?.classList.remove("-rotate-45", "-translate-y-2");
+
       // Re-enable body scroll
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
   }
 
   // Toggle menu on button click
-  hamburgerBtn?.addEventListener('click', toggleMenu);
+  hamburgerBtn?.addEventListener("click", toggleMenu);
 
   // Close menu when clicking on menu items
-  mobileMenuItems.forEach(item => {
-    item.addEventListener('click', () => {
+  mobileMenuItems.forEach((item) => {
+    item.addEventListener("click", () => {
       if (isMenuOpen) {
         toggleMenu();
       }
@@ -138,8 +152,8 @@ import { COMPANY_INFO } from '@/constants/site';
   });
 
   // Close menu on escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isMenuOpen) {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isMenuOpen) {
       toggleMenu();
     }
   });
@@ -151,14 +165,16 @@ import { COMPANY_INFO } from '@/constants/site';
     scroll-padding-top: 5rem;
   }
 
-  @media (min-width: 768px) {
-    html {
-      scroll-padding-top: 6rem;
-    }
-  }
-
   /* Hamburger animation styles */
   .hamburger-line {
     transform-origin: center;
+  }
+
+  /* Custom cursor for nav links - brush icon with white fill and black stroke */
+  .nav-link {
+    cursor:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='-6 -6 32 32'%3E%3Cg transform='rotate(-45 12 12)'%3E%3Cpath fill='none' stroke='%23000000' stroke-width='4' stroke-linejoin='round' stroke-linecap='round' d='m24 10h-24v-5a5.006 5.006 0 0 1 5-5h5v3a1 1 0 0 0 2 0v-3h2v5a1 1 0 0 0 2 0v-5h2v7a1 1 0 0 0 2 0v-6.9a5.009 5.009 0 0 1 4 4.9zm-23.7 2a7.011 7.011 0 0 0 6.7 5h2v4a3 3 0 0 0 6 0v-4h2a7.011 7.011 0 0 0 6.7-5z'/%3E%3Cpath fill='%23ffffff' d='m24 10h-24v-5a5.006 5.006 0 0 1 5-5h5v3a1 1 0 0 0 2 0v-3h2v5a1 1 0 0 0 2 0v-5h2v7a1 1 0 0 0 2 0v-6.9a5.009 5.009 0 0 1 4 4.9zm-23.7 2a7.011 7.011 0 0 0 6.7 5h2v4a3 3 0 0 0 6 0v-4h2a7.011 7.011 0 0 0 6.7-5z'/%3E%3C/g%3E%3C/svg%3E")
+        16 16,
+      pointer;
   }
 </style>
