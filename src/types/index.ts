@@ -7,7 +7,7 @@
 // TIPOS DE COMPONENTES UI
 // ============================================
 
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'normal';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps {

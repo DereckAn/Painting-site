@@ -31,17 +31,18 @@ const baseStyles = 'inline-flex items-center justify-center gap-2 font-medium tr
 
 // Variantes de estilo
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-black text-white hover:bg-gray-900 focus:ring-gray-900 border-2 border-black',
+  primary: 'bg-black text-white hover:bg-white hover:text-black focus:ring-gray-900 border-2 border-black font-anton rotate-3',
   secondary: 'bg-gray-700 text-white hover:bg-gray-800 focus:ring-gray-700 border-2 border-gray-700',
   outline: 'bg-transparent text-black border-2 border-black hover:bg-black hover:text-white focus:ring-black',
   ghost: 'bg-transparent text-black hover:bg-gray-100 focus:ring-gray-400',
+  normal: "bg-transparent text-white font-anton"
 };
 
 // Tamaños
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: 'px-4 py-2 text-sm rounded-md',
-  md: 'px-6 py-3 text-base rounded-lg',
-  lg: 'px-8 py-4 text-lg rounded-lg',
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base ',
+  lg: 'px-8 py-4 text-lg ',
 };
 
 const widthStyle = fullWidth ? 'w-full' : '';

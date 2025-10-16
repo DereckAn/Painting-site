@@ -10,9 +10,9 @@ import type { ServiceItem, Testimonial } from '@/types';
 // ============================================
 
 export const HERO_CONTENT = {
-  title: 'Transformamos Espacios Con Elegancia',
+  title: 'Transformamos espacios con elegancia',
   subtitle: 'Servicios profesionales de pintura que elevan la estética de su hogar con precisión y dedicación artesanal',
-  ctaText: 'Solicitar Presupuesto',
+  ctaText: 'See our work',
   ctaLink: '#contact',
 } as const;
 

@@ -44,62 +44,67 @@ const {
       role="img"
       aria-label="Pintura profesional con rodillo"
     >
-      <!-- Fallback para cuando no hay imagen -->
-     
-      </div>
     </div>
-
-    <!-- Overlay oscuro para legibilidad -->
-    <div class="absolute inset-0 bg-black/50"></div>
   </div>
+
+  <div class="absolute inset-0 bg-black/50"></div>
 
   <!-- Contenido -->
   <Container class="relative z-10 h-full">
     <div class="flex h-full flex-col items-center justify-center text-center">
-      <!-- Título Principal -->
-      <h1
-        class="mb-6 max-w-5xl font-serif text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
-      >
-        {title}
-      </h1>
+      <!-- Título Principal con animación SVG -->
+      <div class="relative mb-6">
+        <!-- SVG animado detrás del título -->
+        <div
+          class="paint-bg absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-100"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 854.55 353.99"
+            preserveAspectRatio="xMidYMid meet"
+            class="w-[600px] h-auto sm:w-[700px] md:w-[800px] lg:w-[1100px]"
+            aria-hidden="true"
+          >
+            <g>
+              <polyline
+                class="paint-path opacity-100"
+                points="74.49 42.43 62.47 309.56 181.63 32.45 195.34 303.45 339.26 36.08 347.15 321.54 504.12 32.45 513.96 325.79 608.59 67.15 612.41 308.31 747.9 44.93 787.26 315.8"
+              ></polyline>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Título que se revela -->
+        <h1
+          class="relative z-10 max-w-5xl font-serif text-4xl font-bold leading-tight text-black sm:text-5xl md:text-6xl lg:text-7xl"
+        >
+          {title}
+        </h1>
+      </div>
 
       <!-- Subtítulo -->
       <p
-        class="mb-10 max-w-3xl text-base leading-relaxed text-gray-100 sm:text-lg md:text-xl lg:text-2xl"
+        class="mb-10 mt-30 2xl:mt-40 max-w-3xl text-base leading-relaxed text-gray-100 sm:text-lg md:text-xl"
       >
         {subtitle}
       </p>
 
       <!-- CTA Button -->
-      <Button
-        href={ctaLink}
-        variant="primary"
-        size="lg"
-        class="group shadow-xl hover:shadow-2xl"
-      >
-        <span>{ctaText}</span>
-        <!-- Icono de flecha -->
-        <svg
-          class="h-5 w-5 transition-transform group-hover:translate-x-1"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-        </svg>
-      </Button>
+      <div class="flex gap-10 xl:gap-20">
+        <Button>
+          <span class="text-2xl hover-brush">GET YOUR FREE QUOTE</span>
+        </Button>
+        <Button href={ctaLink}
+          variant="normal">
+          <span class="text-2xl hover-brush">{ctaText}</span>
+        </Button>
+      </div>
 
       <!-- Scroll Indicator (opcional) -->
       <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
         <a
           href="#services"
-          class="flex flex-col items-center gap-2 text-white opacity-75 transition-opacity hover:opacity-100"
+          class="flex flex-col items-center gap-2 text-white transition-opacity hover:opacity-100"
           aria-label="Desplazarse a servicios"
         >
           <span class="text-sm uppercase tracking-wider">Descubre más</span>
@@ -134,5 +139,40 @@ const {
   /* Smooth scroll para los enlaces internos */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Animación de líneas de pintura estilo rodillo */
+  .paint-bg {
+    pointer-events: none;
+  }
+
+  .paint-path {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 140;
+    /* Longitud aproximada del path - ajustar según sea necesario */
+    stroke-dasharray: 3000;
+    stroke-dashoffset: 3000;
+    /* Animar el trazo del path */
+    animation: drawPath 3s ease-out forwards;
+  }
+
+  /* Animación para dibujar el path (efecto de rodillo pintando) */
+  @keyframes drawPath {
+    from {
+      stroke-dashoffset: 3000;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* Reducir el movimiento para usuarios que lo prefieren */
+  @media (prefers-reduced-motion: reduce) {
+    .paint-path {
+      animation: none;
+      stroke-dashoffset: 0;
+      stroke-width: 150;
+    }
   }
 </style>
