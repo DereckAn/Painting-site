@@ -19,7 +19,7 @@ import homeIcon from "@/assets/home.svg";
     >
       <!-- Residential Card -->
       <div
-        class="service-card relative text-white hover:text-black p-8 shadow-2xl w-full md:w-2/5 overflow-hidden"
+        class="service-card relative text-black 2xl:text-white 2xl:hover:text-black p-8 shadow-2xl w-full md:w-2/5 overflow-hidden"
       >
         <!-- SVG animado de fondo -->
         <div class="service-bg absolute inset-0 pointer-events-none">
@@ -88,7 +88,7 @@ import homeIcon from "@/assets/home.svg";
 
       <!-- Commercial Card -->
       <div
-        class="service-card relative text-white hover:text-black p-8 w-full md:w-2/5 overflow-hidden"
+        class="service-card relative text-black 2xl:text-white 2xl:hover:text-black p-8 w-full md:w-2/5 overflow-hidden"
       >
         <!-- SVG animado de fondo -->
         <div class="service-bg absolute inset-0 pointer-events-none">
@@ -220,6 +220,20 @@ import homeIcon from "@/assets/home.svg";
     100% {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  /* En dispositivos móviles (sin hover), mostrar la animación completa */
+  @media (hover: none) or (max-width: 768px) {
+    .service-bg-path {
+      stroke-dashoffset: 0;
+      transition: none;
+    }
+
+    .service-content {
+      opacity: 1;
+      transform: translateY(0);
+      transition: none;
     }
   }
 
