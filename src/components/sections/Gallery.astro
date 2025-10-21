@@ -1,10 +1,12 @@
 ---
 /**
  * Gallery/Portfolio Section Component
- * Displays completed painting projects in a grid layout
+ * Displays completed painting projects in a grid layout with toggle between residential and commercial
  */
 
-const galleryImages = [
+import Button from '@/components/ui/Button.astro';
+
+const residentialImages = [
   {
     url: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000",
     alt: "Modern living room with elegant finishes"
@@ -26,9 +28,60 @@ const galleryImages = [
     alt: "Elegant facade"
   },
   {
-    url: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?q=80&w=1000",
+    url: "https://plus.unsplash.com/premium_photo-1689609950112-d66095626efb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1287",
     alt: "Sophisticated dining room"
-  }
+  },
+  {
+    url: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000",
+    alt: "Cozy living space"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000",
+    alt: "Modern bedroom design"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000",
+    alt: "Contemporary kitchen space"
+  },
+];
+
+const commercialImages = [
+  {
+    url: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000",
+    alt: "Modern office space"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1000",
+    alt: "Corporate workspace"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000",
+    alt: "Commercial building exterior"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=1000",
+    alt: "Retail space interior"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1000",
+    alt: "Restaurant dining area"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=1000",
+    alt: "Hotel lobby"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1000",
+    alt: "Conference room"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1574180566232-aaad1b5b8450?q=80&w=1000",
+    alt: "Commercial hallway"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000",
+    alt: "Office reception area"
+  },
 ];
 ---
 
@@ -38,30 +91,215 @@ const galleryImages = [
       <span class="text-sm font-medium tracking-wider text-muted-foreground uppercase">
         Portfolio
       </span>
-      <h2 class="text-4xl md:text-5xl font-display font-bold mt-4 tracking-tight">
+      <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-16 sm:mb-20 tracking-tight font-bold text-start">
         Completed Projects
       </h2>
+
+      <!-- Toggle Button -->
+      <div class="flex justify-start mt-8">
+        <ul class="inline-flex gap-8 items-start">
+          <li class="relative button-wrapper">
+            <button class="toggle-btn active relative z-50 px-6 py-3 font-medium hover-brush text-2xl" data-category="residential">
+                Residential
+            </button>
+            <div class="absolute inset-0 z-0 svg-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184.2 89.71" preserveAspectRatio="none" class="w-full h-full">
+                    <g>
+                        <polyline class="paint-button animate" points="21.3 77 52.33 10.42 73.06 75.54 108.28 11.3 130.87 79.88 162.86 10.42"></polyline>
+                    </g>
+                </svg>
+            </div>
+            
+          </li>
+          <li class="relative button-wrapper">
+            <div class="absolute inset-0 z-0 svg-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184.2 89.71" preserveAspectRatio="none" class="w-full h-full">
+                    <g>
+                        <polyline class="paint-button" points="21.3 77 52.33 10.42 73.06 75.54 108.28 11.3 130.87 79.88 162.86 10.42"></polyline>
+                    </g>
+                </svg>
+            </div>
+            <button class="toggle-btn relative z-10 px-6 py-3 font-medium hover-brush text-2xl" data-category="commercial">
+                Commercial
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {galleryImages.map((image, index) => (
-        <div class="group relative aspect-square overflow-hidden rounded-sm cursor-pointer">
-          <img
-            src={image.url}
-            alt={image.alt}
-            class="object-cover w-full h-full grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <!-- Gallery Grid -->
+    <div class="gallery-wrapper">
+      <!-- Residential Gallery -->
+      <div id="residential-gallery" class="gallery-container active grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {residentialImages.map((image, index) => (
+          <div class="gallery-item group relative aspect-square overflow-hidden rounded-sm cursor-pointer">
+            <img
+              src={image.url}
+              alt={image.alt}
+              class="object-cover w-full h-full grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-          <!-- Overlay text -->
-          <div class="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <p class="text-white font-medium text-sm">
-              {image.alt}
-            </p>
+            <!-- Overlay text -->
+            <div class="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-white font-medium text-sm">
+                {image.alt}
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      <!-- Commercial Gallery -->
+      <div id="commercial-gallery" class="gallery-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {commercialImages.map((image, index) => (
+          <div class="gallery-item group relative aspect-square overflow-hidden rounded-sm cursor-pointer">
+            <img
+              src={image.url}
+              alt={image.alt}
+              class="object-cover w-full h-full grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+            <!-- Overlay text -->
+            <div class="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-white font-medium text-sm">
+                {image.alt}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+
+    .paint-button{
+    fill: none;
+    stroke: black;
+    stroke-width: 50;
+    stroke-dasharray: 3000;
+    stroke-dashoffset: 3000;
+    /* Removed automatic animation */
+    }
+
+    /* Animation class that will be added on click */
+    .paint-button.animate {
+      animation: drawPath 8s ease-out forwards;
+    }
+
+    @keyframes drawPath {
+    from {
+      stroke-dashoffset: 3000;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* Toggle Button Styles */
+  .toggle-btn {
+    color: black;
+    transition: color 0.3s ease;
+  }
+
+  .toggle-btn.active {
+    color: white;
+  }
+
+  /* Gallery Wrapper - maintains consistent height */
+  .gallery-wrapper {
+    position: relative;
+    min-height: 400px;
+  }
+
+  /* Gallery Container Animations */
+  .gallery-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  .gallery-container.active {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Gallery Items Animation */
+  .gallery-container.active .gallery-item {
+    animation: slideUp 0.5s ease-out backwards;
+  }
+
+  .gallery-container.active .gallery-item:nth-child(1) { animation-delay: 0.05s; }
+  .gallery-container.active .gallery-item:nth-child(2) { animation-delay: 0.1s; }
+  .gallery-container.active .gallery-item:nth-child(3) { animation-delay: 0.15s; }
+  .gallery-container.active .gallery-item:nth-child(4) { animation-delay: 0.2s; }
+  .gallery-container.active .gallery-item:nth-child(5) { animation-delay: 0.25s; }
+  .gallery-container.active .gallery-item:nth-child(6) { animation-delay: 0.3s; }
+  .gallery-container.active .gallery-item:nth-child(7) { animation-delay: 0.35s; }
+  .gallery-container.active .gallery-item:nth-child(8) { animation-delay: 0.4s; }
+  .gallery-container.active .gallery-item:nth-child(9) { animation-delay: 0.45s; }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Gallery toggle functionality
+  const toggleButtons = document.querySelectorAll<HTMLButtonElement>('.toggle-btn');
+  const galleries = document.querySelectorAll<HTMLElement>('.gallery-container');
+  const buttonWrappers = document.querySelectorAll<HTMLElement>('.button-wrapper');
+
+  toggleButtons.forEach((button: HTMLButtonElement, index: number) => {
+    button.addEventListener('click', () => {
+      const category = button.dataset.category;
+
+      // Update active button
+      toggleButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // Animate SVG for the clicked button
+      buttonWrappers.forEach((wrapper, wrapperIndex) => {
+        const svgPolyline = wrapper.querySelector<SVGPolylineElement>('.paint-button');
+        if (svgPolyline) {
+          // Remove animation class
+          svgPolyline.classList.remove('animate');
+          
+          if (wrapperIndex === index) {
+            // Force reflow to restart animation
+            void wrapper.offsetWidth;
+            // Add animation class to clicked button
+            svgPolyline.classList.add('animate');
+          }
+        }
+      });
+
+      // Update active gallery with smooth transition
+      galleries.forEach(gallery => {
+        gallery.classList.remove('active');
+      });
+
+      const targetGallery = document.getElementById(`${category}-gallery`);
+      if (targetGallery) {
+        targetGallery.classList.add('active');
+      }
+    });
+  });
+</script>
