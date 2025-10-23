@@ -1,0 +1,24 @@
+{
+  "title": "Our Customers",
+  "reviews": [
+    {
+      "text": "We're always willing to wait until he's available... he leaves everything looking brand new!",
+      "author": "Judy Minnett",
+      "image": "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2000",
+      "imageAlt": "Freshly painted living room"
+    },
+    {
+      "text": "Outstanding work! The attention to detail was impressive and the crew was professional and respectful of our home.",
+      "author": "Michael Johnson",
+      "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2000",
+      "imageAlt": "Modern painted bedroom"
+    },
+    {
+      "text": "Best painting service in town! They transformed our office space and completed the project ahead of schedule.",
+      "author": "Sarah Williams",
+      "image": "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=2000",
+      "imageAlt": "Commercial office space"
+    }
+  ],
+  "googleReviewsLink": "https://www.google.com/maps"
+}

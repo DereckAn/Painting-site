@@ -1,0 +1,26 @@
+{
+  "label": "About Us",
+  "title": "Excellence in Every",
+  "titleHighlight": "Brushstroke",
+  "paragraphs": [
+    "With over a decade of experience, we specialize in transforming residential spaces with impeccable finishes that reflect sophistication and quality.",
+    "Our team of skilled craftsmen combines traditional techniques with state-of-the-art materials to guarantee lasting and aesthetically exceptional results.",
+    "Each project is an opportunity to demonstrate our commitment to perfection, punctuality, and complete customer satisfaction."
+  ],
+  "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1000",
+  "imageAlt": "Professional painting team at work",
+  "stats": [
+    {
+      "value": "10+",
+      "label": "Years"
+    },
+    {
+      "value": "500+",
+      "label": "Projects"
+    },
+    {
+      "value": "100%",
+      "label": "Satisfaction"
+    }
+  ]
+}

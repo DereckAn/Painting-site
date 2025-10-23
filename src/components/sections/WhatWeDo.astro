@@ -3,6 +3,14 @@
 import apartmentIcon from "@/assets/apartment.svg";
 import fillIcon from "@/assets/fill.svg";
 import homeIcon from "@/assets/home.svg";
+import { getWhatWeDoContent } from "@/lib/tina";
+
+// Load content from Tina CMS
+const content = getWhatWeDoContent();
+
+const sectionTitle = content?.title || "What We Do";
+const residential = content?.residential;
+const commercial = content?.commercial;
 ---
 
 <section
@@ -12,7 +20,7 @@ import homeIcon from "@/assets/home.svg";
     <h2
       class="text-4xl sm:text-5xl md:text-8xl font-nunito text-center mb-12 sm:mb-16"
     >
-      What We Do
+      {sectionTitle}
     </h2>
     <div
       class="flex flex-col md:flex-row justify-center items-stretch gap-12 md:gap-8 lg:gap-16"
@@ -49,39 +57,27 @@ import homeIcon from "@/assets/home.svg";
             />
           </div>
           <h3 class="text-3xl font-bold uppercase text-center mb-4">
-            RESIDENTIAL
+            {residential?.title}
           </h3>
           <p class="text-base sm:text-lg mb-6">
-            Your home is a special place, and we're committed to treating it
-            with the utmost care. Whether it's a full interior repaint or a
-            single room refresh, our dedication to quality ensures that every
-            project is completed to your satisfaction.
+            {residential?.description}
           </p>
           <div
             class="text-center text-lg sm:text-xl font-bold uppercase flex flex-wrap justify-center items-center gap-x-2"
           >
-            <span>PAINTING</span>
-            <img
-              src={fillIcon.src}
-              alt=""
-              class="w-5 h-5 inline-block"
-              aria-hidden="true"
-            />
-            <span>CEILING</span>
-            <img
-              src={fillIcon.src}
-              alt=""
-              class="w-5 h-5 inline-block"
-              aria-hidden="true"
-            />
-            <span>REPAIR</span>
-            <img
-              src={fillIcon.src}
-              alt=""
-              class="w-5 h-5 inline-block"
-              aria-hidden="true"
-            />
-            <span>INTERIOR</span>
+            {residential?.features?.map((feature, index) => (
+              <>
+                <span>{feature}</span>
+                {index < (residential?.features?.length || 0) - 1 && (
+                  <img
+                    src={fillIcon.src}
+                    alt=""
+                    class="w-5 h-5 inline-block"
+                    aria-hidden="true"
+                  />
+                )}
+              </>
+            ))}
           </div>
         </div>
       </div>
@@ -118,46 +114,36 @@ import homeIcon from "@/assets/home.svg";
             />
           </div>
           <h3 class="text-3xl font-bold uppercase text-center mb-4">
-            COMMERCIAL
+            {commercial?.title}
           </h3>
           <div class="relative">
             <p class="text-base sm:text-lg mb-4">
-              Your business interior must reflect your brand and is a pride in
-              helping you create a professional and polished space.
+              {commercial?.description}
             </p>
-            <div class="">
-              <p class="text-base sm:text-lg">
-                Our team is skilled in handling new construction and renovation
-                projects, ensuring they're completed on time and within budget,
-                while maintaining the highest standards of quality.
-              </p>
-            </div>
+            {commercial?.additionalDescription && (
+              <div class="">
+                <p class="text-base sm:text-lg">
+                  {commercial?.additionalDescription}
+                </p>
+              </div>
+            )}
           </div>
           <div
             class="text-center text-lg sm:text-xl font-bold uppercase flex flex-wrap justify-center items-center gap-x-2 mt-6"
           >
-            <span>RETAIL</span>
-            <img
-              src={fillIcon.src}
-              alt=""
-              class="w-5 h-5 inline-block"
-              aria-hidden="true"
-            />
-            <span>NEW CONSTRUCTION</span>
-            <img
-              src={fillIcon.src}
-              alt=""
-              class="w-5 h-5 inline-block"
-              aria-hidden="true"
-            />
-            <span>INDUSTRIAL</span>
-            <img
-              src={fillIcon.src}
-              alt=""
-              class="w-5 h-5 inline-block"
-              aria-hidden="true"
-            />
-            <span>INTERIOR</span>
+            {commercial?.features?.map((feature, index) => (
+              <>
+                <span>{feature}</span>
+                {index < (commercial?.features?.length || 0) - 1 && (
+                  <img
+                    src={fillIcon.src}
+                    alt=""
+                    class="w-5 h-5 inline-block"
+                    aria-hidden="true"
+                  />
+                )}
+              </>
+            ))}
           </div>
         </div>
       </div>

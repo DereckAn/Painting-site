@@ -1,0 +1,38 @@
+{
+  "label": "Our Team",
+  "title": "Highly Qualified",
+  "titleHighlight": "Professionals",
+  "description": "Meet the experts who will transform your space with dedication and mastery",
+  "members": [
+    {
+      "name": "Carlos Mendoza",
+      "role": "Project Director",
+      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600",
+      "description": "15 years of experience leading high-complexity projects"
+    },
+    {
+      "name": "Ana Rodríguez",
+      "role": "Finishing Specialist",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600",
+      "description": "Expert in decorative techniques and premium finishes"
+    },
+    {
+      "name": "Miguel Torres",
+      "role": "Master Painter",
+      "image": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=600",
+      "description": "Specialized in restoration and residential projects"
+    },
+    {
+      "name": "Laura Sánchez",
+      "role": "Quality Coordinator",
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600",
+      "description": "Ensures the highest standards on every project"
+    },
+    {
+      "name": "Roberto Díaz",
+      "role": "Senior Technician",
+      "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600",
+      "description": "Expert in surface preparation and advanced techniques"
+    }
+  ]
+}

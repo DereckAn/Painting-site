@@ -1,0 +1,14 @@
+{
+  "title": "What We Do",
+  "residential": {
+    "title": "RESIDENTIAL",
+    "description": "Your home is a special place, and we're committed to treating it with the utmost care. Whether it's a full interior repaint or a single room refresh, our dedication to quality ensures that every project is completed to your satisfaction.",
+    "features": ["PAINTING", "CEILING", "REPAIR", "INTERIOR"]
+  },
+  "commercial": {
+    "title": "COMMERCIAL",
+    "description": "Your business interior must reflect your brand and is a pride in helping you create a professional and polished space.",
+    "additionalDescription": "Our team is skilled in handling new construction and renovation projects, ensuring they're completed on time and within budget, while maintaining the highest standards of quality.",
+    "features": ["RETAIL", "NEW CONSTRUCTION", "INDUSTRIAL", "INTERIOR"]
+  }
+}

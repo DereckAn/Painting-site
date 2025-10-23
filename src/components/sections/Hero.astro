@@ -7,23 +7,18 @@
 
 import Button from "@/components/ui/Button.astro";
 import Container from "@/components/ui/Container.astro";
-import { HERO_CONTENT } from "@/constants/content";
+import { getHeroContent } from "@/lib/tina";
 
-interface Props {
-  title?: string;
-  subtitle?: string;
-  ctaText?: string;
-  ctaLink?: string;
-  backgroundImage?: string;
-}
+// Load content from Tina CMS
+const content = getHeroContent();
 
 const {
-  title = HERO_CONTENT.title,
-  subtitle = HERO_CONTENT.subtitle,
-  ctaText = HERO_CONTENT.ctaText,
-  ctaLink = HERO_CONTENT.ctaLink,
-  backgroundImage = "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2000",
-} = Astro.props;
+  title = content?.title || "Transformamos espacios con elegancia",
+  subtitle = content?.subtitle || "Servicios profesionales de pintura",
+  ctaText = content?.ctaText || "See our work",
+  ctaLink = content?.ctaLink || "#contact",
+  backgroundImage = content?.backgroundImage || "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2000",
+} = {};
 ---
 
 <section

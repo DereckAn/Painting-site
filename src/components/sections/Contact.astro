@@ -7,16 +7,28 @@
 import Button from '../ui/Button.astro';
 import Input from '../ui/Input.astro';
 import Textarea from '../ui/Textarea.astro';
+import { getContactContent } from "@/lib/tina";
+
+// Load content from Tina CMS
+const content = getContactContent();
+
+const label = content?.label || "Contact";
+const title = content?.title || "Start Your Project";
+const heading = content?.heading || "Let's talk about your project";
+const description = content?.description || "We're here to turn your vision into reality. Contact us for a free consultation and personalized quote.";
+const phone = content?.phone || "+1 (234) 567-890";
+const email = content?.email || "info@elitepainting.com";
+const location = content?.location || "We serve the entire metropolitan area";
 ---
 
 <section id="contact" class="py-24 px-6 bg-background">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16">
       <span class="text-sm font-medium tracking-wider text-muted-foreground uppercase">
-        Contact
+        {label}
       </span>
       <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-16 sm:mb-20 text-start font-bold tracking-tight">
-        Start Your Project
+        {title}
       </h2>
     </div>
 
@@ -25,11 +37,10 @@ import Textarea from '../ui/Textarea.astro';
       <div class="space-y-8">
         <div>
           <h3 class="text-2xl font-display font-semibold mb-6">
-            Let's talk about your project
+            {heading}
           </h3>
           <p class="text-muted-foreground leading-relaxed mb-8">
-            We're here to turn your vision into reality. Contact us for
-            a free consultation and personalized quote.
+            {description}
           </p>
         </div>
 
@@ -42,8 +53,8 @@ import Textarea from '../ui/Textarea.astro';
             </div>
             <div>
               <div class="font-medium mb-1">Phone</div>
-              <a href="tel:+1234567890" class="text-muted-foreground hover:text-primary transition-colors">
-                +1 (234) 567-890
+              <a href={`tel:${phone.replace(/\s/g, '')}`} class="text-muted-foreground hover:text-primary transition-colors">
+                {phone}
               </a>
             </div>
           </div>
@@ -57,8 +68,8 @@ import Textarea from '../ui/Textarea.astro';
             </div>
             <div>
               <div class="font-medium mb-1">Email</div>
-              <a href="mailto:info@elitepainting.com" class="text-muted-foreground hover:text-primary transition-colors">
-                info@elitepainting.com
+              <a href={`mailto:${email}`} class="text-muted-foreground hover:text-primary transition-colors">
+                {email}
               </a>
             </div>
           </div>
@@ -73,7 +84,7 @@ import Textarea from '../ui/Textarea.astro';
             <div>
               <div class="font-medium mb-1">Location</div>
               <p class="text-muted-foreground">
-                We serve the entire metropolitan area
+                {location}
               </p>
             </div>
           </div>

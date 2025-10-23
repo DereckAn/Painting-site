@@ -1,0 +1,21 @@
+{
+  "companyInfo": {
+    "name": "Elite Painting Services",
+    "tagline": "Transformamos Espacios Con Elegancia",
+    "description": "Servicios profesionales de pintura que elevan la estética de su hogar con precisión y dedicación artesanal",
+    "email": "contacto@elitepainting.com",
+    "phone": "+1 (555) 123-4567",
+    "address": {
+      "street": "123 Main Street",
+      "city": "Ciudad",
+      "state": "Estado",
+      "zipCode": "12345",
+      "country": "País"
+    },
+    "socialMedia": {
+      "facebook": "https://facebook.com/elitepainting",
+      "instagram": "https://instagram.com/elitepainting",
+      "linkedin": "https://linkedin.com/company/elitepainting"
+    }
+  }
+}

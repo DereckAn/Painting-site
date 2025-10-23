@@ -1,5 +1,18 @@
 ---
 // About Section Component
+
+import { getAboutContent } from "@/lib/tina";
+
+// Load content from Tina CMS
+const content = getAboutContent();
+
+const label = content?.label || "About Us";
+const title = content?.title || "Excellence in Every";
+const titleHighlight = content?.titleHighlight || "Brushstroke";
+const paragraphs = content?.paragraphs || [];
+const image = content?.image || "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1000";
+const imageAlt = content?.imageAlt || "Professional painting team at work";
+const stats = content?.stats || [];
 ---
 
 <section id="about" class="py-24 px-6 bg-muted/30">
@@ -9,32 +22,20 @@
       <div class="space-y-6">
         <div class="inline-block">
           <span class="text-sm font-medium tracking-wider text-muted-foreground uppercase">
-            About Us
+            {label}
           </span>
           <div class="h-px bg-primary w-16 mt-2"></div>
         </div>
 
         <h2 class="text-4xl md:text-5xl font-display font-bold tracking-tight">
-          Excellence in Every
-          <span class="block">Brushstroke</span>
+          {title}
+          <span class="block">{titleHighlight}</span>
         </h2>
 
         <div class="space-y-4 text-muted-foreground leading-relaxed">
-          <p>
-            With over a decade of experience, we specialize in transforming residential
-            spaces with impeccable finishes that reflect sophistication and quality.
-          </p>
-
-          <p>
-            Our team of skilled craftsmen combines traditional techniques with
-            state-of-the-art materials to guarantee lasting and aesthetically
-            exceptional results.
-          </p>
-
-          <p>
-            Each project is an opportunity to demonstrate our commitment to
-            perfection, punctuality, and complete customer satisfaction.
-          </p>
+          {paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
         </div>
       </div>
 
@@ -42,8 +43,8 @@
       <div class="relative">
         <div class="aspect-square relative overflow-hidden rounded-sm">
           <img
-            src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1000"
-            alt="Professional painting team at work"
+            src={image}
+            alt={imageAlt}
             class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
@@ -51,24 +52,12 @@
 
         <!-- Stats Grid -->
         <div class="grid grid-cols-3 gap-4 mt-8">
-          <div class="text-center">
-            <div class="text-3xl font-display font-bold">
-              10<span class="text-primary">+</span>
+          {stats.map((stat) => (
+            <div class="text-center">
+              <div class="text-3xl font-display font-bold" set:html={stat.value.includes('+') ? stat.value.replace('+', '<span class="text-primary">+</span>') : stat.value.replace('%', '<span class="text-primary">%</span>')} />
+              <div class="text-sm text-muted-foreground mt-1">{stat.label}</div>
             </div>
-            <div class="text-sm text-muted-foreground mt-1">Years</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-display font-bold">
-              500<span class="text-primary">+</span>
-            </div>
-            <div class="text-sm text-muted-foreground mt-1">Projects</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-display font-bold">
-              100<span class="text-primary">%</span>
-            </div>
-            <div class="text-sm text-muted-foreground mt-1">Satisfaction</div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

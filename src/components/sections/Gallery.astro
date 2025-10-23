@@ -5,94 +5,25 @@
  */
 
 import Button from '@/components/ui/Button.astro';
+import { getGalleryContent } from "@/lib/tina";
 
-const residentialImages = [
-  {
-    url: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000",
-    alt: "Modern living room with elegant finishes"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000",
-    alt: "Minimalist bedroom"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000",
-    alt: "Contemporary kitchen"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000",
-    alt: "Modern house exterior"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000",
-    alt: "Elegant facade"
-  },
-  {
-    url: "https://plus.unsplash.com/premium_photo-1689609950112-d66095626efb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1287",
-    alt: "Sophisticated dining room"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000",
-    alt: "Cozy living space"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000",
-    alt: "Modern bedroom design"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000",
-    alt: "Contemporary kitchen space"
-  },
-];
+// Load content from Tina CMS
+const content = getGalleryContent();
 
-const commercialImages = [
-  {
-    url: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000",
-    alt: "Modern office space"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1000",
-    alt: "Corporate workspace"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000",
-    alt: "Commercial building exterior"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=1000",
-    alt: "Retail space interior"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1000",
-    alt: "Restaurant dining area"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=1000",
-    alt: "Hotel lobby"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1000",
-    alt: "Conference room"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1574180566232-aaad1b5b8450?q=80&w=1000",
-    alt: "Commercial hallway"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000",
-    alt: "Office reception area"
-  },
-];
+const label = content?.label || "Portfolio";
+const title = content?.title || "Completed Projects";
+const residentialImages = content?.residential || [];
+const commercialImages = content?.commercial || [];
 ---
 
 <section id="gallery" class="py-24 px-6 bg-muted/30">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16">
       <span class="text-sm font-medium tracking-wider text-muted-foreground uppercase">
-        Portfolio
+        {label}
       </span>
       <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-16 sm:mb-20 tracking-tight font-bold text-start">
-        Completed Projects
+        {title}
       </h2>
 
       <!-- Toggle Button -->

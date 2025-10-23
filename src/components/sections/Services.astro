@@ -4,28 +4,12 @@
  * Displays the main painting services offered
  */
 
-const services = [
-  {
-    icon: "home",
-    title: "Interior Painting",
-    description: "Complete interior transformation with perfect finishes and personalized colors that reflect your style."
-  },
-  {
-    icon: "paintbrush",
-    title: "Exterior Painting",
-    description: "Protection and beautification of facades with highly durable paints resistant to weather conditions."
-  },
-  {
-    icon: "sparkles",
-    title: "Special Finishes",
-    description: "Exclusive decorative techniques: Venetian plaster, textured effects and satin matte finishes."
-  },
-  {
-    icon: "palette",
-    title: "Color Consultation",
-    description: "Professional advice on selecting color palettes that harmonize with your space and preferences."
-  }
-];
+import { getServicesContent } from "@/lib/tina";
+
+// Load content from Tina CMS
+const content = getServicesContent();
+
+const services = content?.services || [];
 
 const icons = {
   home: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
