@@ -12,19 +12,23 @@ import { COMPANY_INFO } from "@/constants/site";
   <div class="px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16 md:h-20">
       <!-- Logo -->
-      <a href="#top" class="flex-shrink-0 transition-opacity hover:opacity-80">
+      <a
+        href="#top"
+        class="flex flex-row items-center justify-center flex-shrink-0 transition-opacity hover:opacity-80"
+      >
         <img
           src="/images/logo.jpeg"
           alt={COMPANY_INFO.name}
           class="h-10 md:h-14 w-auto object-contain"
         />
+        <h2 class="text-3xl font-light font-poppins">MarinUS</h2>
       </a>
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex items-center space-x-8 text-xl font-nunito">
         <a
           href="#about"
-          class="nav-link  text-gray-700 hover:text-gray-900 font-semibold relative group"
+          class="nav-link text-gray-700 hover:text-gray-900 font-semibold relative group"
         >
           About
           <span
@@ -42,7 +46,7 @@ import { COMPANY_INFO } from "@/constants/site";
         </a>
         <a
           href="#contact"
-          class="nav-link font-gothic bg-gray-900 text-white px-6 py-2.5 rotate-6 hover:bg-gray-800 font-semibold transition-all duration-300 hover:scale-105"
+          class="nav-link font-poppins flex items-center justify-center font-light rounded-sm bg-black text-white px-6 py-2.5 hover:bg-white hover:text-black transition-all duration-300"
         >
           Get a Quote
         </a>

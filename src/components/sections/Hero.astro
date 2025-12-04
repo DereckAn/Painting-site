@@ -16,14 +16,15 @@ const {
   title = content?.title || "Transformamos espacios con elegancia",
   subtitle = content?.subtitle || "Servicios profesionales de pintura",
   ctaText = content?.ctaText || "See our work",
-  ctaLink = content?.ctaLink || "#contact",
-  backgroundImage = content?.backgroundImage || "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2000",
+  ctaLink = content?.ctaLink || "#gallery",
+  backgroundImage = content?.backgroundImage ||
+    "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2000",
 } = {};
 ---
 
 <section
   id="hero"
-  class="relative h-dvh min-h-[600px] w-full overflow-hidden"
+  class="relative h-[70dvh] min-h-[600px] w-full overflow-hidden"
   aria-label="Hero Section"
 >
   <!-- Background Image con Overlay -->
@@ -49,29 +50,9 @@ const {
     <div class="flex h-full flex-col items-center justify-center text-center">
       <!-- Título Principal con animación SVG -->
       <div class="relative mb-6">
-        <!-- SVG animado detrás del título -->
-        <div
-          class="paint-bg absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-100"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 854.55 353.99"
-            preserveAspectRatio="xMidYMid meet"
-            class="w-[600px] h-auto sm:w-[700px] md:w-[800px] lg:w-[1100px]"
-            aria-hidden="true"
-          >
-            <g>
-              <polyline
-                class="paint-path opacity-100"
-                points="74.49 42.43 62.47 309.56 181.63 32.45 195.34 303.45 339.26 36.08 347.15 321.54 504.12 32.45 513.96 325.79 608.59 67.15 612.41 308.31 747.9 44.93 787.26 315.8"
-              ></polyline>
-            </g>
-          </svg>
-        </div>
-
         <!-- Título que se revela -->
         <h1
-          class="relative z-10 max-w-5xl font-serif text-4xl font-bold leading-tight text-black sm:text-5xl md:text-6xl lg:text-7xl"
+          class="relative z-10 max-w-5xl font-poppins text-4xl font-light leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
         >
           {title}
         </h1>
@@ -79,19 +60,21 @@ const {
 
       <!-- Subtítulo -->
       <p
-        class="mb-10 mt-30 2xl:mt-40 max-w-3xl text-base leading-relaxed text-gray-100 sm:text-lg md:text-xl"
+        class="mb-10 mt-10 max-w-3xl text-base leading-relaxed text-gray-100 sm:text-lg md:text-xl"
       >
         {subtitle}
       </p>
 
       <!-- CTA Button -->
       <div class="flex gap-10 xl:gap-20">
-        <Button>
-          <span class="text-2xl hover-brush">GET YOUR FREE QUOTE</span>
-        </Button>
-        <Button href={ctaLink}
-          variant="normal">
-          <span class="text-2xl hover-brush">{ctaText}</span>
+        <a
+          href="#contact"
+          class="nav-link font-poppins text-2xl flex items-center justify-center font-light rounded-sm bg-black text-white px-6 py-2.5 hover:bg-white hover:text-black transition-all duration-300"
+        >
+          Get a Quote
+        </a>
+        <Button href={ctaLink} variant="normal">
+          <span class="text-2xl font-poppins">{ctaText}</span>
         </Button>
       </div>
 
@@ -112,7 +95,7 @@ const {
             aria-hidden="true"
           >
             <path
-              stroke-linecap="round"
+              stroke-linecap="round"  
               stroke-linejoin="round"
               stroke-width="2"
               d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
