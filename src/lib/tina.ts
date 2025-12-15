@@ -3,24 +3,28 @@
  * Functions to load and parse Tina CMS content for each section
  */
 
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
 /**
  * Get the content directory path
  */
 function getContentPath() {
-  return path.join(process.cwd(), 'content');
+  return path.join(process.cwd(), "content");
 }
 
 /**
  * Generic function to load section content
  */
 function loadSection<T>(sectionName: string): T | null {
-  const filePath = path.join(getContentPath(), 'sections', `${sectionName}.json`);
+  const filePath = path.join(
+    getContentPath(),
+    "sections",
+    `${sectionName}.json`
+  );
 
   try {
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const fileContent = fs.readFileSync(filePath, "utf-8");
     return JSON.parse(fileContent);
   } catch (error) {
     console.error(`Error loading ${sectionName} content:`, error);
@@ -32,69 +36,76 @@ function loadSection<T>(sectionName: string): T | null {
  * Load hero section content
  */
 export function getHeroContent() {
-  return loadSection<HeroContent>('hero');
+  return loadSection<HeroContent>("hero");
 }
 
 /**
  * Load services section content
  */
 export function getServicesContent() {
-  return loadSection<ServicesContent>('services');
+  return loadSection<ServicesContent>("services");
 }
 
 /**
  * Load about section content
  */
 export function getAboutContent() {
-  return loadSection<AboutContent>('about');
+  return loadSection<AboutContent>("about");
 }
 
 /**
  * Load what we do section content
  */
 export function getWhatWeDoContent() {
-  return loadSection<WhatWeDoContent>('whatwedo');
+  return loadSection<WhatWeDoContent>("whatwedo");
 }
 
 /**
  * Load team section content
  */
 export function getTeamContent() {
-  return loadSection<TeamContent>('team');
+  return loadSection<TeamContent>("team");
 }
 
 /**
  * Load gallery section content
  */
 export function getGalleryContent() {
-  return loadSection<GalleryContent>('gallery');
+  return loadSection<GalleryContent>("gallery");
 }
 
 /**
  * Load reviews section content
  */
 export function getReviewsContent() {
-  return loadSection<ReviewsContent>('reviews');
+  return loadSection<ReviewsContent>("reviews");
 }
 
 /**
  * Load contact section content
  */
 export function getContactContent() {
-  return loadSection<ContactContent>('contact');
+  return loadSection<ContactContent>("contact");
+}
+
+/**
+ * Load clients section content
+ */
+export function getClientsContent() {
+  return loadSection<ClientsContent>("clients");
 }
 
 /**
  * Load site settings from Tina
  */
 export function getSiteSettings() {
-  const filePath = path.join(getContentPath(), 'settings', 'site.json');
+  const filePath = path.join(getContentPath(), "settings", "site.json");
 
   try {
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const fileContent = fs.readFileSync(filePath, "utf-8");
     return JSON.parse(fileContent) as SiteSettings;
   } catch (error) {
-    console.error('Error loading site settings:', error);
+    console.error("Error loading site settings:", error);
     return null;
   }
 }
@@ -197,6 +208,17 @@ export interface ContactContent {
   phone: string;
   email: string;
   location: string;
+}
+
+export interface Client {
+  name: string;
+  logo: string;
+}
+
+export interface ClientsContent {
+  heading: string;
+  subheading: string;
+  clients: Client[];
 }
 
 export interface CompanyInfo {

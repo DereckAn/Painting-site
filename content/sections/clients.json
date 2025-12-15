@@ -1,0 +1,38 @@
+{
+  "heading": "Clientes",
+  "subheading": "Hemos trabajado con las mejores empresas del sector",
+  "clients": [
+    {
+      "name": "Constructora ABC",
+      "logo": "/src/assets/images/pato.png"
+    },
+    {
+      "name": "Inmobiliaria XYZ",
+      "logo": "/src/assets/images/pato.png"
+    },
+    {
+      "name": "Hoteles Premium",
+      "logo": "/src/assets/images/pato.png"
+    },
+    {
+      "name": "Corporativo Global",
+      "logo": "/src/assets/images/pato.png"
+    },
+    {
+      "name": "Restaurantes Elite",
+      "logo": "/src/assets/images/pato.png"
+    },
+    {
+      "name": "Oficinas Modernas",
+      "logo": "/src/assets/images/pato.png"
+    },
+    {
+      "name": "Espacios Comerciales",
+      "logo": "/src/assets/images/pato.png"
+    },
+    {
+      "name": "Desarrollos Urbanos",
+      "logo": "/src/assets/images/pato.png"
+    }
+  ]
+}

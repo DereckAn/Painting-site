@@ -1,0 +1,184 @@
+---
+/**
+ * Clients Section Component
+ * Infinite carousel displaying client company logos
+ */
+
+import Container from "@/components/ui/Container.astro";
+import Section from "@/components/ui/Section.astro";
+import { getClientsContent } from "@/lib/tina";
+
+// Load content from Tina CMS
+const content = getClientsContent();
+
+const heading = content?.heading || "Empresas que Confían en Nosotros";
+const clients = content?.clients || [];
+---
+
+<Section id="clients" background="dark" class="">
+  <Container class="">
+    <div class="clients-wrapper">
+      <!-- Header -->
+      <div class="clients-header">
+        <h2
+          class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight font-bold text-start mb-16 sm:mb-20"
+        >
+          {heading}
+        </h2>
+      </div>
+
+      <!-- Infinite Carousel -->
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <!-- Primera iteración de logos -->
+          {
+            clients.map((client) => (
+              <div class="client-item">
+                <img src={client.logo} alt={client.name} loading="lazy" />
+              </div>
+            ))
+          }
+          <!-- Segunda iteración para el efecto infinito -->
+          {
+            clients.map((client) => (
+              <div class="client-item">
+                <img src={client.logo} alt={client.name} loading="lazy" />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .clients-wrapper {
+    padding: 4rem 0;
+  }
+
+  .clients-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .clients-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .carousel-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Gradientes en los bordes para efecto de desvanecimiento */
+  .carousel-container::before,
+  .carousel-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, black, transparent);
+  }
+
+  .carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, black, transparent);
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 4rem;
+    animation: scroll 30s linear infinite;
+    width: fit-content;
+  }
+
+  /* Pausa la animación al hacer hover */
+  .carousel-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .client-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 140px;
+    padding: 2.5rem;
+    background: var(--color-surface);
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .client-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .client-item img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+
+  .client-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .clients-wrapper {
+      padding: 3rem 0;
+    }
+
+    .clients-header {
+      margin-bottom: 3rem;
+    }
+
+    .carousel-track {
+      gap: 2rem;
+      animation-duration: 20s;
+    }
+
+    .client-item {
+      width: 200px;
+      height: 100px;
+      padding: 1.5rem;
+      border-radius: 14px;
+    }
+
+    .carousel-container::before,
+    .carousel-container::after {
+      width: 50px;
+    }
+  }
+</style>

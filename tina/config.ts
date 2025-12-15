@@ -329,7 +329,8 @@ export default defineConfig({
                 name: "features",
                 label: "Features",
                 list: true,
-                description: "List of features (e.g., 'PAINTING', 'CEILING', etc.)",
+                description:
+                  "List of features (e.g., 'PAINTING', 'CEILING', etc.)",
               },
             ],
           },
@@ -365,7 +366,8 @@ export default defineConfig({
                 name: "features",
                 label: "Features",
                 list: true,
-                description: "List of features (e.g., 'RETAIL', 'NEW CONSTRUCTION', etc.)",
+                description:
+                  "List of features (e.g., 'RETAIL', 'NEW CONSTRUCTION', etc.)",
               },
             ],
           },
@@ -648,6 +650,58 @@ export default defineConfig({
             type: "string",
             name: "location",
             label: "Location Text",
+          },
+        ],
+      },
+
+      // ============================================
+      // CLIENTS SECTION COLLECTION
+      // ============================================
+      {
+        name: "clients",
+        label: "Clients Carousel",
+        path: "content/sections",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        match: {
+          include: "clients",
+        },
+        fields: [
+          {
+            type: "string",
+            name: "heading",
+            label: "Section Title",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "subheading",
+            label: "Section Subtitle",
+          },
+          {
+            type: "object",
+            name: "clients",
+            label: "Clients List",
+            list: true,
+            fields: [
+              {
+                type: "string",
+                name: "name",
+                label: "Client Name",
+                required: true,
+              },
+              {
+                type: "image",
+                name: "logo",
+                label: "Client Logo",
+                required: true,
+              },
+            ],
           },
         ],
       },

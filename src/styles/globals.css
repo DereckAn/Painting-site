@@ -8,3 +8,7 @@
 body {
   font-family: var(--font-montserrat);
 }
+
+html, body {
+  overscroll-behavior: none;
+}
