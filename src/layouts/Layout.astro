@@ -4,6 +4,7 @@
  * Layout base para todas las páginas del sitio
  */
 
+import Footer from "@/components/layout/Footer.astro";
 import Navbar from "@/components/layout/Navbar.astro";
 import { DEFAULT_SEO } from "@/constants/site";
 import "@/styles/custom-cursor.css";
@@ -86,6 +87,7 @@ const seoData = {
   <body class="antialiased" id="top">
     <Navbar />
     <slot />
+    <Footer />
   </body>
 </html>
 
