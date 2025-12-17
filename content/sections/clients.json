@@ -4,35 +4,35 @@
   "clients": [
     {
       "name": "Constructora ABC",
-      "logo": "/images/pato.png"
+      "logo": "/src/assets/images/pato.png"
     },
     {
       "name": "Inmobiliaria XYZ",
-      "logo": "/images/pato.png"
+      "logo": "/src/assets/images/pato.png"
     },
     {
       "name": "Hoteles Premium",
-      "logo": "/images/pato.png"
+      "logo": "/src/assets/images/pato.png"
     },
     {
       "name": "Corporativo Global",
-      "logo": "/images/pato.png"
+      "logo": "/src/assets/images/pato.png"
     },
     {
       "name": "Restaurantes Elite",
-      "logo": "/images/pato.png"
+      "logo": "/src/assets/images/pato.png"
     },
     {
       "name": "Oficinas Modernas",
-      "logo": "/images/pato.png"
+      "logo": "/src/assets/images/pato.png"
     },
     {
       "name": "Espacios Comerciales",
-      "logo": "/images/pato.png"
+      "logo": "/src/assets/images/pato.png"
     },
     {
       "name": "Desarrollos Urbanos",
-      "logo": "/images/pato.png"
+      "logo": "/src/assets/images/pato.png"
     }
   ]
 }

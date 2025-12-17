@@ -7,6 +7,7 @@
 import Container from "@/components/ui/Container.astro";
 import Section from "@/components/ui/Section.astro";
 import { getClientsContent } from "@/lib/tina";
+import { Image } from "astro:assets";
 
 // Load content from Tina CMS
 const content = getClientsContent();
@@ -34,7 +35,14 @@ const clients = content?.clients || [];
           {
             clients.map((client) => (
               <div class="client-item">
-                <img src={client.logo} alt={client.name} loading="lazy" />
+                {/* <img src={client.logo} alt={client.name} loading="lazy" /> */}
+                <Image
+                  src={client.logo}
+                  alt={client.name}
+                  loading="lazy"
+                  width={470}
+                  height={470}
+                />
               </div>
             ))
           }
@@ -42,7 +50,14 @@ const clients = content?.clients || [];
           {
             clients.map((client) => (
               <div class="client-item">
-                <img src={client.logo} alt={client.name} loading="lazy" />
+                {/* <img src={client.logo} alt={client.name} loading="lazy" /> */}
+                <Image
+                  src={client.logo}
+                  alt={client.name}
+                  loading="lazy"
+                  width={470}
+                  height={470}
+                />
               </div>
             ))
           }

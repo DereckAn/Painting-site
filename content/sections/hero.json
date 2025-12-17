@@ -3,5 +3,5 @@
   "subtitle": "Professional painting services that enhance the aesthetics of your home with precision and craftsmanship.",
   "ctaText": "See our work",
   "ctaLink": "#gallery",
-  "backgroundImage": "/images/heroimage.webp"
+  "backgroundImage": "/src/assets/images/heroimage.webp"
 }
