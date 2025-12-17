@@ -705,6 +705,78 @@ export default defineConfig({
           },
         ],
       },
+
+      // ============================================
+      // FOOTER SECTION COLLECTION
+      // ============================================
+      {
+        name: "footer",
+        label: "Footer",
+        path: "content/sections",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        match: {
+          include: "footer",
+        },
+        fields: [
+          {
+            type: "string",
+            name: "companyName",
+            label: "Company Name",
+            required: true,
+          },
+          {
+            type: "object",
+            name: "menuLinks",
+            label: "Menu Links",
+            list: true,
+            fields: [
+              { type: "string", name: "label", label: "Label", required: true },
+              { type: "string", name: "href", label: "Link", required: true },
+            ],
+          },
+          {
+            type: "object",
+            name: "socialLinks",
+            label: "Social Links",
+            list: true,
+            fields: [
+              { type: "string", name: "label", label: "Label", required: true },
+              { type: "string", name: "href", label: "URL", required: true },
+              {
+                type: "string",
+                name: "icon",
+                label: "Icon",
+                options: ["facebook", "instagram", "linkedin", "twitter"],
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "contactInfo",
+            label: "Contact Info",
+            fields: [
+              { type: "string", name: "email", label: "Email" },
+              { type: "string", name: "phone", label: "Phone" },
+            ],
+          },
+          {
+            type: "object",
+            name: "legalLinks",
+            label: "Legal Links",
+            list: true,
+            fields: [
+              { type: "string", name: "label", label: "Label", required: true },
+              { type: "string", name: "href", label: "Link", required: true },
+            ],
+          },
+        ],
+      },
     ],
   },
 });

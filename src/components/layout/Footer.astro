@@ -3,13 +3,11 @@
  * Footer Component
  * Company footer with navigation, social links, and contact information
  */
-import { getFooterContent } from "@/lib/tina";
-
-import { Image } from "astro:assets";
 import logo from "@/assets/logo.svg";
+import { getFooterContent } from "@/lib/tina";
+import { Image } from "astro:assets";
 
-// Load content from Tina CMS (or use default values)
-const content = getFooterContent?.() || {};
+const content = getFooterContent();
 
 const companyName = content?.companyName || "MarinUs";
 const menuLinks = content?.menuLinks || [
@@ -18,18 +16,15 @@ const menuLinks = content?.menuLinks || [
   { label: "INSIGHTS", href: "#insights" },
   { label: "CONTACT", href: "#contact" },
 ];
-
 const socialLinks = content?.socialLinks || [
   { label: "FACEBOOK", href: "#", icon: "facebook" },
   { label: "INSTAGRAM", href: "#", icon: "instagram" },
   { label: "LINKEDIN", href: "#", icon: "linkedin" },
 ];
-
 const contactInfo = content?.contactInfo || {
   email: "info@marinus.com",
   phone: "0412 054 507",
 };
-
 const legalLinks = content?.legalLinks || [
   { label: "PRIVACY POLICY", href: "#privacy" },
   { label: "TERMS & CONDITIONS", href: "#terms" },
@@ -38,16 +33,13 @@ const legalLinks = content?.legalLinks || [
 
 <footer class="bg-black text-white border-t border-border">
   <div class="px-6 py-16">
-    <!-- Top Section -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16 ">
-      <!-- Logo -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
       <div class="md:col-span-7">
         <a href="/" class="inline-block group">
-          <Image src={logo} alt="MarinUs Logo" class={"invert max-w-56"}  />
+          <Image src={logo} alt="MarinUs Logo" class={"invert max-w-56"} />
         </a>
       </div>
 
-      <!-- Menu -->
       <div class="">
         <h3
           class="text-xs font-medium tracking-wider text-muted-foreground mb-6"
@@ -61,7 +53,7 @@ const legalLinks = content?.legalLinks || [
                 <li>
                   <a
                     href={link.href}
-                    class="text-sm font-medium hover:text-primary transition-colors duration-300 uppercase tracking-wide relative inline-block after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                    class="text-sm font-medium transition-colors duration-300 uppercase tracking-wide relative inline-block after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-current after:transition-all after:duration-300 hover:after:w-full"
                   >
                     {link.label}
                   </a>
@@ -72,7 +64,6 @@ const legalLinks = content?.legalLinks || [
         </nav>
       </div>
 
-      <!-- Social -->
       <div class="">
         <h3
           class="text-xs font-medium tracking-wider text-muted-foreground mb-6"
@@ -86,7 +77,7 @@ const legalLinks = content?.legalLinks || [
                 <li>
                   <a
                     href={link.href}
-                    class="text-sm font-medium hover:text-primary transition-colors duration-300 uppercase tracking-wide relative inline-block after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                    class="text-sm font-medium transition-colors duration-300 uppercase tracking-wide relative inline-block after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-current after:transition-all after:duration-300 hover:after:w-full"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -99,7 +90,6 @@ const legalLinks = content?.legalLinks || [
         </nav>
       </div>
 
-      <!-- Contact -->
       <div class="md:col-span-3">
         <h3
           class="text-xs font-medium tracking-wider text-muted-foreground mb-6"
@@ -109,13 +99,13 @@ const legalLinks = content?.legalLinks || [
         <div class="space-y-3">
           <a
             href={`mailto:${contactInfo.email}`}
-            class="block text-sm font-medium hover:text-primary transition-colors duration-300 uppercase tracking-wide break-all relative inline-block after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+            class="block text-sm font-medium transition-colors duration-300 uppercase tracking-wide break-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-current after:transition-all after:duration-300 hover:after:w-full"
           >
             {contactInfo.email}
           </a>
           <a
-            href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-            class="block text-sm font-medium hover:text-primary transition-colors duration-300 uppercase tracking-wide relative inline-block after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+            href={`tel:${contactInfo.phone?.replace(/\s/g, "")}`}
+            class="block text-sm font-medium transition-colors duration-300 uppercase tracking-wide relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-current after:transition-all after:duration-300 hover:after:w-full"
           >
             {contactInfo.phone}
           </a>
@@ -123,7 +113,6 @@ const legalLinks = content?.legalLinks || [
       </div>
     </div>
 
-    <!-- Brand Name Section -->
     <div class="relative overflow-hidden">
       <h2
         class="text-[6rem] sm:text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[20rem] 2xl:text-[27rem] text-center font-bold leading-none tracking-tighter break-all"
@@ -132,7 +121,6 @@ const legalLinks = content?.legalLinks || [
       </h2>
     </div>
 
-    <!-- Legal Links -->
     <div class="border-t border-border pt-8">
       <div
         class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"

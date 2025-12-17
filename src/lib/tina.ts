@@ -110,6 +110,13 @@ export function getSiteSettings() {
   }
 }
 
+/**
+ * Load footer from tine
+ */
+export function getFooterContent() {
+  return loadSection<FooterContent>("footer");
+}
+
 // ============================================
 // TYPE DEFINITIONS
 // ============================================
@@ -243,4 +250,12 @@ export interface CompanyInfo {
 
 export interface SiteSettings {
   companyInfo: CompanyInfo;
+}
+
+interface FooterContent {
+  companyName: string;
+  menuLinks: { label: string; href: string }[];
+  socialLinks: { label: string; href: string; icon: string }[];
+  contactInfo: { email: string; phone: string };
+  legalLinks: { label: string; href: string }[];
 }
