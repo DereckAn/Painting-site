@@ -14,6 +14,11 @@ const content = getClientsContent();
 
 const heading = content?.heading || "Empresas que Confían en Nosotros";
 const clients = content?.clients || [];
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/**/*.{png,jpg,jpeg,svg,webp}",
+  { eager: true }
+);
 ---
 
 <Section id="clients" background="dark" class="">
@@ -33,33 +38,43 @@ const clients = content?.clients || [];
         <div class="carousel-track">
           <!-- Primera iteración de logos -->
           {
-            clients.map((client) => (
-              <div class="client-item">
-                {/* <img src={client.logo} alt={client.name} loading="lazy" /> */}
-                <Image
-                  src={client.logo}
-                  alt={client.name}
-                  loading="lazy"
-                  width={470}
-                  height={470}
-                />
-              </div>
-            ))
+            clients.map((client) => {
+              const img = images[client.logo]?.default;
+              return (
+                <div class="client-item">
+                  {img && (
+                    <Image
+                      src={img}
+                      alt={client.name}
+                      loading="lazy"
+                      width={470}
+                      height={470}
+                      format="webp"
+                    />
+                  )}
+                </div>
+              );
+            })
           }
           <!-- Segunda iteración para el efecto infinito -->
           {
-            clients.map((client) => (
-              <div class="client-item">
-                {/* <img src={client.logo} alt={client.name} loading="lazy" /> */}
-                <Image
-                  src={client.logo}
-                  alt={client.name}
-                  loading="lazy"
-                  width={470}
-                  height={470}
-                />
-              </div>
-            ))
+            clients.map((client) => {
+              const img = images[client.logo]?.default;
+              return (
+                <div class="client-item">
+                  {img && (
+                    <Image
+                      src={img}
+                      alt={client.name}
+                      loading="lazy"
+                      width={470}
+                      height={470}
+                      format="webp"
+                    />
+                  )}
+                </div>
+              );
+            })
           }
         </div>
       </div>
