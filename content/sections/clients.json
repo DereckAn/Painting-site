@@ -25,14 +25,6 @@
     {
       "name": "Oficinas Modernas",
       "logo": "/src/assets/images/behr.png"
-    },
-    {
-      "name": "Espacios Comerciales",
-      "logo": "/src/assets/images/pato.png"
-    },
-    {
-      "name": "Desarrollos Urbanos",
-      "logo": "/src/assets/images/pato.png"
     }
   ]
 }
